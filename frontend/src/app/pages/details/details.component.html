@@ -1,0 +1,76 @@
+<div class="mdl-grid mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+
+  <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+    <button type="button" (click)="navigateBack()" class="mdl-button mdl-js-button mdl-button--raised color--light-blue"
+      style="float: left">
+      <i class="material-icons">keyboard_arrow_left</i>
+
+      Back
+    </button>
+    <button type="button" (click)="addToWatchList()"
+      class="mdl-button mdl-js-button mdl-button--raised color--light-blue" style="margin-left: 50px">
+      Watch
+    </button>
+  </div>
+
+
+  <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--2-col-phone">
+    <base-card>
+      <base-card-title>
+        <h2 class="mdl-card__title-text">  {{ asset.name }} ( {{ asset.symbol }})</h2>
+      </base-card-title>
+      <base-card-body>
+        <ul class="mdl-list">
+          <li class="mdl-list__item list__item--border-top">
+            <span class="mdl-list__item-primary-content list__item-text">Price</span>
+            <span class="mdl-list__item-secondary-content"> {{ asset.priceUsd | currency }}</span>
+          </li>
+          <li class="mdl-list__item list__item--border-top">
+            <span class="mdl-list__item-primary-content list__item-text ">Rank</span>
+            <span class="mdl-list__item-secondary-content">{{asset.rank}}</span>
+          </li>
+          <li class="mdl-list__item list__item--border-top">
+            <span class="mdl-list__item-primary-content list__item-text">Change (24h)</span>
+            <span class="mdl-list__item-secondary-content">
+              <span
+                  class="{{
+                    asset.changePercent24Hr < 0
+                      ? 'color-text--red'
+                      : 'color-text--green'
+                  }}"
+                >
+             {{ asset.changePercent24Hr | number }} %
+             </span>
+            </span>
+          </li>
+          <li class="mdl-list__item list__item--border-top">
+            <span class="mdl-list__item-primary-content list__item-text ">MarketCap</span>
+            <span class="mdl-list__item-secondary-content"> {{ asset.marketCapUsd/1000 | currency }}
+              m</span>
+          </li>
+          <li class="mdl-list__item list__item--border-top">
+            <span class="mdl-list__item-primary-content list__item-text ">Volume (24h)</span>
+            <span class="mdl-list__item-secondary-content">{{ asset.volumeUsd24Hr/1000 | currency
+              }}m</span>
+          </li>
+          <li class="mdl-list__item list__item--border-top">
+            <span class="mdl-list__item-primary-content list__item-text ">Supply</span>
+            <span class="mdl-list__item-secondary-content"> {{ asset.supply/1000 | number}} m</span>
+          </li>
+        </ul>
+      </base-card-body>
+    </base-card>
+  </div>
+  <div class="mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+    <base-card>
+      <base-card-title>
+        <h2 class="mdl-card__title-text">Chart from  {{actualDate}}</h2>
+      </base-card-title>
+      <base-card-body>
+        <details-chart></details-chart>
+      </base-card-body>
+    </base-card>
+  </div>
+
+
+</div>

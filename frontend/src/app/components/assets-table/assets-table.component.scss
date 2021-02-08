@@ -1,0 +1,25 @@
+:host {
+  .mdl-card,
+  .mdl-card__supporting-text {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+
+
+    td {
+      font-size: 1rem;
+      text-align: left;
+    }
+  }
+
+  .no-padding {
+    padding: 0;
+    width: 100%;
+  }
+
+  .label__availability {
+    margin-right: 2px;
+  }
+}

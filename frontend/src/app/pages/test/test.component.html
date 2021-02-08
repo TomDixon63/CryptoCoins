@@ -1,0 +1,66 @@
+<div
+  class="mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone"
+>
+  <base-progress
+    color="orange"
+    indeterminate
+    *ngIf="isLoading"
+  ></base-progress>
+
+  <br/>
+  <br/>
+
+  <button
+    type="button"
+    class="mdl-button mdl-js-button mdl-button--raised color--light-blue"
+    (click)="progressStart()"
+  >
+    Start
+  </button>
+
+  <button
+    type="button"
+    class="mdl-button mdl-js-button mdl-button--raised color--light-blue"
+    (click)="progressStop()"
+  >
+    Stop
+  </button>
+
+  <h1>Alerts</h1>
+  <button
+    type="button"
+    class="mdl-button mdl-js-button mdl-button--raised color--light-blue"
+    (click)="alertService.success('Success!!', options)"
+  >
+    Success
+  </button>
+  <button
+    class="mdl-button mdl-js-button mdl-button--raised color--red"
+    (click)="alertService.error('Error :(', options)"
+  >
+    Error
+  </button>
+  <button
+    class="mdl-button mdl-js-button mdl-button--raised color--green"
+    (click)="alertService.info('Some info....', options)"
+  >
+    Info
+  </button>
+  <button
+    class="mdl-button mdl-js-button mdl-button--raised color--orange"
+    (click)="alertService.warn('Warning: ...', options)"
+  >
+    Warn
+  </button>
+  <button
+    class="mdl-button mdl-js-button mdl-button--raised color--white"
+    (click)="alertService.clear()"
+  >
+    Clear
+  </button>
+
+
+  
+</div>
+
+

@@ -1,0 +1,67 @@
+<div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone">
+  <base-card>
+    <base-card-title>
+      <h2 class="mdl-card__title-text">Top 100 Coins by Market Capitalization </h2>
+      <base-pagination [numPage]="numPage" [currentPage]="currentPage" (changePage)="changePage($event)">
+      </base-pagination>
+    </base-card-title>
+    <base-card-body class="no-padding">
+      <table class="mdl-data-table mdl-js-data-table sorting-table" *ngIf="tableData?.length">
+        <thead>
+          <tr>
+            <th *ngFor="let header of tableHeaders; let i = index" class="mdl-data-table__cell--non-numeric "
+              (click)="changeSorting(header, i)">
+              <span>{{ header.name }}</span>
+              <i *ngIf="header.sort !== null" class="material-icons sorting" [class.asc]="header.sort === sortOrder.asc"
+                [class.active]="
+                header.sort === sortOrder.asc || header.sort === sortOrder.desc
+              ">sort</i>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let asset of tableData">
+            <td class="mdl-data-table__cell--numeric ">
+              {{ asset.rank }}
+            </td>
+            <td class="mdl-data-table__cell--non-numeric ">
+              {{ asset.name }} ( {{ asset.symbol }})
+            </td>
+            <td class="mdl-data-table__cell--non-numeric ">
+              {{ asset.priceUsd | currency }}
+            </td>
+            <td class="mdl-data-table__cell--numeric ">
+              {{ asset.marketCapUsd/1000 | currency }} m
+            </td>
+            <td class="mdl-data-table__cell--numeric ">
+              {{ asset.vwap24Hr | currency }}
+            </td>
+            <td class="mdl-data-table__cell--numeric ">
+              {{ asset.supply/1000 | number}} m
+            </td>
+            <td class="mdl-data-table__cell--numeric ">
+              {{ asset.volumeUsd24Hr/1000 | currency }}m
+            </td>
+            <td class="mdl-data-table__cell--numeric ">
+              <span
+                  class="{{
+                    asset.changePercent24Hr < 0
+                      ? 'color-text--red'
+                      : 'color-text--green'
+                  }}"
+                >
+             {{ asset.changePercent24Hr | number }} %
+             </span>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric padding-column-right">
+              <button type="button" (click)="navigateToDetailsPage(asset.id)"
+                class="mdl-button mdl-js-button mdl-button--raised color--light-blue">
+                Details
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </base-card-body>
+  </base-card>
+</div>
