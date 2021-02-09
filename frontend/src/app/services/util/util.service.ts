@@ -49,6 +49,7 @@ export class UtilService {
     asset.supply = element["supply"];
     asset.volumeUsd24Hr = element["volumeUsd24Hr"];
     asset.vwap24Hr = element["vwap24Hr"];
+    asset.pathToImage ="../../../assets/images/coins/"+  asset.symbol +".png"
     return asset;
   }
 

@@ -26,7 +26,7 @@ export class DetailsChartComponent implements OnInit {
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
   xAxisLabel: string = 'Date';
-  yAxisLabel: string = 'Price';
+  yAxisLabel: string = 'Price $';
   timeline: boolean = true;
 
   //colors

@@ -12,6 +12,7 @@ export class Asset {
   public priceUsd: number;
   public changePercent24Hr: number;
   public vwap24Hr: number;
+  public pathToImage: string;
 
   constructor() {}
 

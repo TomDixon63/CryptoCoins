@@ -129,6 +129,10 @@ export class AssetsTableComponent
         sort: null,
       },
       {
+        name: "",
+        sort: null,
+      },
+      {
         name: "Name",
         sort: 0,
       },
