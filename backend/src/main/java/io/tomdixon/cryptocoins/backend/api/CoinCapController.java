@@ -1,4 +1,4 @@
-package io.tomdixon.depot.backend.api;
+package io.tomdixon.cryptocoins.backend.api;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import io.tomdixon.depot.backend.service.CoinCapService;
+import io.tomdixon.cryptocoins.backend.service.CoinCapService;
 
 @RequestMapping("api/v1/coincap")
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-public class Controller {
+public class CoinCapController {
 
 	private final CoinCapService service;
 
 	private final static String STRING_2_DELETE = "/api/v1/coincap/assets";
 
 	@Autowired
-	public Controller(CoinCapService service) {
+	public CoinCapController(CoinCapService service) {
 
 		this.service = service;
 	}
@@ -32,6 +32,12 @@ public class Controller {
 	public JsonNode getAssets() {
 
 		return this.service.getAssets();
+	}
+
+	@GetMapping("/assets/limit")
+	public JsonNode getTop5Assets() {
+
+		return this.service.getTop5Assets();
 	}
 
 	// 'api.coincap.io/v2/assets/bitcoin'

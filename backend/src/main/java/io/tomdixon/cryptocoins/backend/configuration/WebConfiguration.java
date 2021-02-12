@@ -1,4 +1,4 @@
-package io.tomdixon.depot.backend.configuration;
+package io.tomdixon.cryptocoins.backend.configuration;
 
 import org.springframework.context.annotation.Configuration;
 

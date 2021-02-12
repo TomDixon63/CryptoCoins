@@ -9,11 +9,7 @@ import { AuthInterceptor, AuthService} from '@services/*';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardModule } from './pages/dashboard';
-import { SearchModule} from './pages/search';
 import { DetailsModule } from './pages/details/details.module';
-import { CompareModule } from './pages/compare';
-import { TestModule } from './pages/test/test.module';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,10 +19,7 @@ import { TestModule } from './pages/test/test.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     DashboardModule,
-    SearchModule,
     DetailsModule,
-    CompareModule,
-    TestModule,
     HttpClientModule,
     NgxChartsModule
   ],
@@ -41,4 +34,5 @@ import { TestModule } from './pages/test/test.module';
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
 

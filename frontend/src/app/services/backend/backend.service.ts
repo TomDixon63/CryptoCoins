@@ -17,6 +17,11 @@ export class BackendService {
     return this.http.get(this.baseUrl.concat(this.assets));
   }
 
+  // get top 5 assets
+  public getTop5Assets() {
+    return this.http.get(this.baseUrl.concat(this.assets).concat('/limit'));
+  }
+
   // get asset by id
   public getAsset(id: string) {
     return this.http.get(this.baseUrl.concat(this.assets).concat('/').concat(id));

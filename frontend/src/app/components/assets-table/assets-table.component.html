@@ -10,12 +10,9 @@
         <thead>
           <tr>
             <th *ngFor="let header of tableHeaders; let i = index" class="mdl-data-table__cell--non-numeric "
-              (click)="changeSorting(header, i)">
+             >
               <span>{{ header.name }}</span>
-              <i *ngIf="header.sort !== null" class="material-icons sorting" [class.asc]="header.sort === sortOrder.asc"
-                [class.active]="
-                header.sort === sortOrder.asc || header.sort === sortOrder.desc
-              ">sort</i>
+
             </th>
           </tr>
         </thead>
@@ -30,7 +27,7 @@
             <td class="mdl-data-table__cell--non-numeric ">
               {{ asset.name }} ( {{ asset.symbol }})
             </td>
-            <td class="mdl-data-table__cell--non-numeric ">
+            <td class="mdl-data-table__cell--numeric ">
               {{ asset.priceUsd | currency }}
             </td>
             <td class="mdl-data-table__cell--numeric ">

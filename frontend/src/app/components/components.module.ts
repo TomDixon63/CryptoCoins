@@ -5,6 +5,6 @@ import { FormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [CommonModule, FormsModule],
-  declarations:[]
+  declarations: []
 })
-export class ComponentsModule {}
+export class ComponentsModule { }

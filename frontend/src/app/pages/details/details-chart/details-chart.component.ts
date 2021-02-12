@@ -2,7 +2,7 @@ import { UtilService } from './../../../services/util/util.service';
 import { AlertService } from './../../../components/alert/alert.service';
 import { BackendService } from './../../../services/backend/backend.service';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'details-chart',
@@ -10,6 +10,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details-chart.component.scss']
 })
 export class DetailsChartComponent implements OnInit {
+
+  // SCSS
+  @HostBinding("class.mdl-grid") public readonly mdlGrid = true;
+  @HostBinding("class.mdl-grid--no-spacing")
+  public readonly mdlGridNoSpacing = true;
+
 
   // data
   chartData: any[] = [];
@@ -29,9 +35,10 @@ export class DetailsChartComponent implements OnInit {
   yAxisLabel: string = 'Price $';
   timeline: boolean = true;
 
+
   //colors
   colorScheme = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+    domain: ['green', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
 
   constructor(
@@ -45,7 +52,6 @@ export class DetailsChartComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       if (params.id) {
         this.getAssetHistory(params.id);
-        // nur test: this.mapResponse2ChartData();
       }
     });
 
@@ -59,15 +65,13 @@ export class DetailsChartComponent implements OnInit {
       if (responseAsString.includes("Error")) {
         this.alertService.warn(responseAsString);
       } else {
-        console.log(response);
         this.mapResponse2ChartData(response);
       }
     });
   }
 
   // map reponse data to chart data
- private mapResponse2ChartData(response: any) {
-
+  private mapResponse2ChartData(response: any) {
     // clear  dataset
     this.chartData = [
       {
@@ -77,16 +81,15 @@ export class DetailsChartComponent implements OnInit {
     ];
 
     // map data and push to chart
-    let i = 1; // to realize an interval of a month (31 days) starting from latest date
+    let i = 1; // to realise an interval of a month (31 days) starting from latest date
     let data: any[] = response.data;
     for (const key in data) {
       if (Object.prototype.hasOwnProperty.call(data, key)) {
-        if (i ==  data.length || i % 30 == 0) {
+        if (i == data.length || i % 30 == 0) {
           let element = data[key];
           this.chartData[0].series.push({
             name: this.utilService.dateConverter(element["time"]),
             value: this.utilService.fixedDecimalConverter(element["priceUsd"]),
-
           });
         }
         i++;

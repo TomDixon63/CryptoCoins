@@ -67,8 +67,8 @@ export class AssetsTableComponent
     });
   }
 
-   // navigate to details page
-   public navigateToDetailsPage(id: string) {
+  // navigate to details page
+  public navigateToDetailsPage(id: string) {
     var url: string = "/app/details?id=" + id;
     this.router.navigateByUrl(url);
   }
@@ -93,14 +93,6 @@ export class AssetsTableComponent
   }
 
   public changePage(page, force = false) {
-    console.log(
-      "-> changePage: page: " +
-      page +
-      " numPage:" +
-      this.numPage +
-      " tableData.length:" +
-      this.tableData.length
-    );
     if (page !== this.currentPage || force) {
       this.currentPage = page;
       this.tableData = this.getTablePage(page, this.countPerPage);
@@ -108,14 +100,6 @@ export class AssetsTableComponent
   }
 
   public getTablePage(page, countPerPage) {
-    console.log(
-      "-> getTablePage: page: " +
-      page +
-      " numPage:" +
-      this.numPage +
-      " tableData.length:" +
-      this.tableData.length
-    );
     return this.assets.slice(
       (page - 1) * countPerPage,
       page * countPerPage

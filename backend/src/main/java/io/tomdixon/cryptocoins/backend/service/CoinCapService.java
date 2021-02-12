@@ -1,4 +1,4 @@
-package io.tomdixon.depot.backend.service;
+package io.tomdixon.cryptocoins.backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +16,8 @@ public class CoinCapService {
 	private final static String ASSETS_ENPOINT = "/assets";
 
 	private final static String INTERVAL = "?interval=d1";
+
+	private final static String LIMIT_5 = "?limit=5";
 
 	private final WebClient webClient;
 
@@ -35,6 +37,24 @@ public class CoinCapService {
 	public JsonNode getAssets() {
 
 		String searchUri = BASE_URL.concat(ASSETS_ENPOINT);
+
+		return this.webClient.get()
+			.uri(searchUri)
+			.retrieve()
+			.bodyToMono(JsonNode.class)
+			.onErrorReturn(getErrorJsonNode())
+			.block();
+	}
+
+	/*
+	 * get top 5 assets
+	 * 
+	 * api.coincap.io/v2/assets?limit=5
+	 */
+	public JsonNode getTop5Assets() {
+
+		String searchUri = BASE_URL.concat(ASSETS_ENPOINT)
+			.concat(LIMIT_5);
 
 		return this.webClient.get()
 			.uri(searchUri)
