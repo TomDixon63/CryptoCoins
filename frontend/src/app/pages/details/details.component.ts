@@ -32,7 +32,6 @@ export class DetailsComponent extends UpgradableComponent implements OnInit {
   // actual date
   public actualDate = new Date().toLocaleString();
 
-
   constructor(
     private route: ActivatedRoute,
     private backendService: BackendService,
@@ -44,7 +43,7 @@ export class DetailsComponent extends UpgradableComponent implements OnInit {
     super();
   }
 
-  // get asset id from url, get asset ticker for chart
+  // get asset id from url, get asset
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       if (params.id) {
@@ -55,15 +54,13 @@ export class DetailsComponent extends UpgradableComponent implements OnInit {
     });
   }
 
-  //get asset
+  // get asset
   private getAsset(id: string) {
     this.backendService.getAsset(id).subscribe((response) => {
       const responseAsString: string = JSON.stringify(response);
-      console.log(responseAsString);
       if (responseAsString.includes("Error")) {
         this.alertService.warn(responseAsString);
       } else {
-        console.log(response);
         this.asset = this.utilService.response2AssetMapper(response);
       }
     });

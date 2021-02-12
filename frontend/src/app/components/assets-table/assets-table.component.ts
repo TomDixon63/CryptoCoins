@@ -144,6 +144,10 @@ export class AssetsTableComponent
         name: "Change (24h)",
         sort: null,
       },
+      {
+        name: "",
+        sort: null,
+      },
     ];
   }
 

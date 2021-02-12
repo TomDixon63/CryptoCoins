@@ -28,19 +28,14 @@ public class CoinCapController {
 		this.service = service;
 	}
 
+	// 'api.coincap.io/v2/assets'
 	@GetMapping("/assets")
 	public JsonNode getAssets() {
 
 		return this.service.getAssets();
 	}
 
-	@GetMapping("/assets/limit")
-	public JsonNode getTop5Assets() {
-
-		return this.service.getTop5Assets();
-	}
-
-	// 'api.coincap.io/v2/assets/bitcoin'
+	// example: 'api.coincap.io/v2/assets/bitcoin'
 	@GetMapping("/assets/**")
 	public JsonNode getAsset(HttpServletRequest request) {
 
@@ -49,7 +44,7 @@ public class CoinCapController {
 		return this.service.getAsset(id);
 	}
 
-	// api.coincap.io/v2/assets/bitcoin/history?interval=d1'
+	// 'api.coincap.io/v2/assets/bitcoin/history?interval=d1'
 	@GetMapping("/assets/**/history")
 	public JsonNode getAssetHistory(HttpServletRequest request) {
 

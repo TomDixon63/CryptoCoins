@@ -6,11 +6,11 @@
       </base-pagination>
     </base-card-title>
     <base-card-body class="no-padding">
-      <table class="mdl-data-table mdl-js-data-table sorting-table" *ngIf="tableData?.length">
+      <table class="mdl-data-table mdl-js-data-table bordered-table" *ngIf="tableData?.length">
         <thead>
           <tr>
             <th *ngFor="let header of tableHeaders; let i = index" class="mdl-data-table__cell--non-numeric "
-             >
+             style="text-align: center">
               <span>{{ header.name }}</span>
 
             </th>
@@ -18,31 +18,31 @@
         </thead>
         <tbody>
           <tr *ngFor="let asset of tableData">
-            <td class="mdl-data-table__cell--numeric ">
+            <td class="mdl-data-table__cell--numeric "  style="text-align: center">
               {{ asset.rank }}
             </td>
-            <td class="mdl-data-table__cell--non-numeric ">
+            <td class="mdl-data-table__cell--non-numeric "  style="text-align: center">
               <img src={{asset.pathToImage}} />
             </td>
-            <td class="mdl-data-table__cell--non-numeric ">
+            <td class="mdl-data-table__cell--non-numeric "  style="text-align: center">
               {{ asset.name }} ( {{ asset.symbol }})
             </td>
-            <td class="mdl-data-table__cell--numeric ">
+            <td class="mdl-data-table__cell--numeric "  style="text-align: right">
               {{ asset.priceUsd | currency }}
             </td>
-            <td class="mdl-data-table__cell--numeric ">
+            <td class="mdl-data-ta" style="text-align: right">
               {{ asset.marketCapUsd/1000 | currency }} m
             </td>
-            <td class="mdl-data-table__cell--numeric ">
+            <td class="mdl-data-table__cell--numeric " style="text-align: right">
               {{ asset.vwap24Hr | currency }}
             </td>
-            <td class="mdl-data-table__cell--numeric ">
+            <td class="mdl-data-table__cell--numeric " style="text-align: right">
               {{ asset.supply/1000 | number}} m
             </td>
-            <td class="mdl-data-table__cell--numeric ">
+            <td class="mdl-data-table__cell--numeric " style="text-align: right">
               {{ asset.volumeUsd24Hr/1000 | currency }}m
             </td>
-            <td class="mdl-data-table__cell--numeric ">
+            <td class="mdl-data-table__cell--numeric "style="text-align: right">
               <span
                   class="{{
                     asset.changePercent24Hr < 0
@@ -53,9 +53,9 @@
              {{ asset.changePercent24Hr | number }} %
              </span>
             </td>
-            <td class="mdl-data-table__cell--non-numeric padding-column-right">
+            <td class="mdl-data-table__cell--non-numeric padding-column-right" style="text-align: center">
               <button type="button" (click)="navigateToDetailsPage(asset.id)"
-                class="mdl-button mdl-js-button mdl-button--raised color--light-blue">
+                class="mdl-button mdl-js-button mdl-button--raised color--light-blue" >
                 Details
               </button>
             </td>

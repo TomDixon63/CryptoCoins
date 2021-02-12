@@ -16,7 +16,6 @@ export class DetailsChartComponent implements OnInit {
   @HostBinding("class.mdl-grid--no-spacing")
   public readonly mdlGridNoSpacing = true;
 
-
   // data
   chartData: any[] = [];
 
@@ -35,10 +34,9 @@ export class DetailsChartComponent implements OnInit {
   yAxisLabel: string = 'Price $';
   timeline: boolean = true;
 
-
   //colors
   colorScheme = {
-    domain: ['green', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+    domain: ['orangered', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
 
   constructor(
@@ -61,28 +59,28 @@ export class DetailsChartComponent implements OnInit {
   private getAssetHistory(id: string) {
     this.backendService.getAssetHistory(id).subscribe((response) => {
       const responseAsString: string = JSON.stringify(response);
-      console.log(responseAsString);
       if (responseAsString.includes("Error")) {
         this.alertService.warn(responseAsString);
       } else {
-        this.mapResponse2ChartData(response);
+        this.mapResponse2ChartData(response, id);
       }
     });
   }
 
   // map reponse data to chart data
-  private mapResponse2ChartData(response: any) {
+  private mapResponse2ChartData(response: any, id: string) {
+
+    let data: any[] = response.data;
     // clear  dataset
     this.chartData = [
       {
-        name: '',
+        name: id,
         series: [],
       },
     ];
 
-    // map data and push to chart
     let i = 1; // to realise an interval of a month (31 days) starting from latest date
-    let data: any[] = response.data;
+
     for (const key in data) {
       if (Object.prototype.hasOwnProperty.call(data, key)) {
         if (i == data.length || i % 30 == 0) {

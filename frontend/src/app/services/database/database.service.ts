@@ -1,7 +1,5 @@
 
 // service class for database access
-// actual only browser local storage access
-// some of the functions could be implemented in the ui but we will work with a database in future
 import { Injectable } from "@angular/core";
 
 
@@ -11,18 +9,8 @@ import { Injectable } from "@angular/core";
 export class DatabaseService {
   constructor() {}
 
-  //get nasdaqList from local storage
-  public getNasdaqList() {
-    return JSON.parse(localStorage.getItem("nasdaqList"));
-  }
 
-  //set nasdaqList in local storage
-  /*
-  public setNadaqList(list: Stock[]) {
-    localStorage.setItem("nasdaqList", JSON.stringify(list));
-  }*/
-
-  //get watchlist from local storage
+  //get watchlist from database
   public getWatchList() {
     return JSON.parse(localStorage.getItem("watchList"));
   }

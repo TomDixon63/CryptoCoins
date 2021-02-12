@@ -1,5 +1,5 @@
+// service class for api access
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -15,11 +15,6 @@ export class BackendService {
   // get all assets
   public getAllAssets() {
     return this.http.get(this.baseUrl.concat(this.assets));
-  }
-
-  // get top 5 assets
-  public getTop5Assets() {
-    return this.http.get(this.baseUrl.concat(this.assets).concat('/limit'));
   }
 
   // get asset by id
