@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import io.tomdixon.cryptocoins.backend.service.CoinCapService;
+import reactor.core.publisher.Mono;
 
 @RequestMapping("api/v1/coincap")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -30,23 +31,23 @@ public class CoinCapController {
 
 	// 'api.coincap.io/v2/assets'
 	@GetMapping("/assets")
-	public JsonNode getAssets() {
+	public Mono<JsonNode> getAssets() {
 
 		return this.service.getAssets();
 	}
 
 	// example: 'api.coincap.io/v2/assets/bitcoin'
 	@GetMapping("/assets/**")
-	public JsonNode getAsset(HttpServletRequest request) {
+	public Mono<JsonNode> getAsset(HttpServletRequest request) {
 
 		String id = StringUtils.delete(request.getRequestURI(), STRING_2_DELETE);
 
 		return this.service.getAsset(id);
 	}
 
-	// 'api.coincap.io/v2/assets/bitcoin/history?interval=d1'
+	// example: 'api.coincap.io/v2/assets/bitcoin/history?interval=d1'
 	@GetMapping("/assets/**/history")
-	public JsonNode getAssetHistory(HttpServletRequest request) {
+	public Mono<JsonNode> getAssetHistory(HttpServletRequest request) {
 
 		String id = StringUtils.delete(request.getRequestURI(), STRING_2_DELETE);
 
