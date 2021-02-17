@@ -9,7 +9,7 @@ Usecases:
 
 - Dashboard: coins watchlist, remove coins from watchlist (not implemented yet)
 
-- Dashboard: exchange markets with coin/usd pairs (not implemented yet)
+- Dashboard: exchange markets with bitcoin/usd pairs 
 
 - Coin details: coin data, 2 years price chart, add coin to watchlist
 
