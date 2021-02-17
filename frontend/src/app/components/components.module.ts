@@ -1,3 +1,5 @@
+import { ThemeModule } from './../../theme/theme.module';
+import { AssetsTableComponent } from './assets-table/assets-table.component';
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
@@ -6,7 +8,8 @@ import { WatchlistTableComponent } from './watchlist-table/watchlist-table.compo
 
 
 @NgModule({
-  imports: [CommonModule, FormsModule],
-  declarations: [MarketsTableComponent, WatchlistTableComponent]
+  imports: [CommonModule, ThemeModule, FormsModule],
+  declarations: [AssetsTableComponent, MarketsTableComponent, WatchlistTableComponent],
+  exports: [AssetsTableComponent, MarketsTableComponent, WatchlistTableComponent]
 })
 export class ComponentsModule { }

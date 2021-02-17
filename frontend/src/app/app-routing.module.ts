@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { LayoutsModule } from './layouts';
 import { CommonLayoutComponent } from './layouts/common-layout';
 import { DashboardComponent } from './pages/dashboard';
-import { ErrorComponent } from './pages/error/error.component';
 import { DetailsComponent } from './pages/details/details.component';
 
 
@@ -20,10 +19,10 @@ import { DetailsComponent } from './pages/details/details.component';
           path: 'app', component: CommonLayoutComponent, children: [
             { path: 'dashboard', component: DashboardComponent, pathMatch: 'full' },
             { path: 'details', component: DetailsComponent, pathMatch: 'full' },
-            { path: '**', component: ErrorComponent, pathMatch: 'full' },
+          //  { path: '**', component: ErrorComponent, pathMatch: 'full' },
           ]
         },
-        { path: '**', component: ErrorComponent, pathMatch: 'full' },
+        //{ path: '**', component: ErrorComponent, pathMatch: 'full' },
       ],
       { useHash: true },
     ),
