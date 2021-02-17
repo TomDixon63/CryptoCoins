@@ -1,0 +1,24 @@
+
+  <base-card style="width: 100%">
+    <base-card-title>
+      <h2 class="mdl-card__title-text">My Watchlist </h2>
+
+    </base-card-title>
+    <base-card-body class="no-padding">
+      <table class="mdl-data-table mdl-js-data-table bordered-table"   *ngIf="tableData?.length">
+        <thead>
+          <tr>
+            <th *ngFor="let header of tableHeaders; let i = index" class="mdl-data-table__cell--non-numeric "
+
+              style="text-align: center">
+              <span>{{ header.name }}</span>
+
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </base-card-body>
+  </base-card>
+

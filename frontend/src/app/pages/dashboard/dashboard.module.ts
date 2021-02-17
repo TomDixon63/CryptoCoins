@@ -1,11 +1,12 @@
-import { AssetsTableComponent } from './../../components/assets-table/assets-table.component';
-
+import { WatchlistTableComponent } from './../../components/watchlist-table/watchlist-table.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ThemeModule } from 'theme';
 import { DashboardComponent } from './dashboard.component';
-import { WatchlistComponent} from './../../components/watchlist/watchlist.component';
+import { MarketsTableComponent } from './../../components/markets-table/markets-table.component';
+import { AssetsTableComponent } from './../../components/assets-table/assets-table.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,7 +16,8 @@ import { WatchlistComponent} from './../../components/watchlist/watchlist.compon
   declarations: [
     DashboardComponent,
     AssetsTableComponent,
-    WatchlistComponent
+    MarketsTableComponent,
+    WatchlistTableComponent
   ]
 })
 export class DashboardModule { }

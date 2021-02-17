@@ -27,5 +27,10 @@ export class BackendService {
     return this.http.get(this.baseUrl.concat(this.assets).concat('/').concat(id).concat('/history'));
   }
 
+  // get bitcoin market data
+  public getBitcoinMarkets() {
+    return this.http.get(this.baseUrl.concat(this.assets).concat('/bitcoin/markets'));
+  }
+
 
 }

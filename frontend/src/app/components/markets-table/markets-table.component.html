@@ -1,0 +1,39 @@
+
+
+  <base-card style="width: 100%">
+    <base-card-title>
+      <h2 class="mdl-card__title-text">Exchange markets </h2>
+      <base-pagination [numPage]="numPage" [currentPage]="currentPage" (changePage)="changePage($event)">
+      </base-pagination>
+    </base-card-title>
+    <base-card-body class="no-padding">
+      <table class="mdl-data-table mdl-js-data-table bordered-table"
+      style="width: 100%;"
+      *ngIf="tableData?.length">
+        <thead>
+          <tr>
+            <th *ngFor="let header of tableHeaders; let i = index" class="mdl-data-table__cell--non-numeric "
+             style="text-align: center">
+              <span>{{ header.name }}</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let market of tableData">
+           <td class="mdl-data-table__cell--non-numeric"  style="text-align: left">
+              {{ market.exchangeId }}
+            </td>
+            <td class="mdl-data-table__cell--non-numeric"  style="text-align: center">
+              {{market.baseSymbol}} / {{market.quoteSymbol}}
+            </td>
+            <td class="mdl-data-table__cell--numeric "  style="text-align: right">
+              {{ market.priceUsd | currency }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </base-card-body>
+  </base-card>
+
+
+

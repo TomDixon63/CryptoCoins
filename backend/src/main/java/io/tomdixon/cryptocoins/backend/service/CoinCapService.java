@@ -17,6 +17,8 @@ public class CoinCapService {
 
 	private final static String ASSETS_ENPOINT = "/assets";
 
+	private final static String BITCOIN_MARKETS_ENDPOINT = "/assets/bitcoin/markets";
+
 	private final static String INTERVAL = "?interval=d1";
 
 	private final WebClient webClient;
@@ -79,6 +81,27 @@ public class CoinCapService {
 		String searchUri = BASE_URL.concat(ASSETS_ENPOINT)
 			.concat(id)
 			.concat(INTERVAL);
+
+		return this.webClient.get()
+			.uri(searchUri)
+			.accept(MediaType.APPLICATION_JSON)
+			.retrieve()
+			.bodyToMono(JsonNode.class)
+			.onErrorResume(WebClientResponseException.class,
+					ex -> ex.getRawStatusCode() == 400 ? Mono.empty() : Mono.error(ex));
+
+	}
+
+	/**
+	 * get bitcoin markets
+	 * 
+	 * 'api.coincap.io/v2/assets/bitcoin/markets'
+	 * 
+	 * @ return market data bitcoin
+	 */
+	public Mono<JsonNode> getBitcoinMarkets() {
+
+		String searchUri = BASE_URL.concat(BITCOIN_MARKETS_ENDPOINT);
 
 		return this.webClient.get()
 			.uri(searchUri)

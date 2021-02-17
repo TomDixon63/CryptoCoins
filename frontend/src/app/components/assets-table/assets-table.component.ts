@@ -81,14 +81,6 @@ export class AssetsTableComponent
   };
 
   public getTableNumOfPage(countPerPage) {
-    console.log(
-      "-> getTableNumOfPage: curentPage: " +
-      this.currentPage +
-      " numPage:" +
-      this.numPage +
-      " tableData.length:" +
-      this.tableData.length
-    );
     return Math.ceil(this.tableData.length / countPerPage);
   }
 

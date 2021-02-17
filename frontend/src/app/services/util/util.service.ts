@@ -1,3 +1,4 @@
+import { Market } from './../../model/market';
 //service class with various util functions
 import { Asset } from './../../model/asset';
 import { Injectable } from "@angular/core";
@@ -35,6 +36,19 @@ export class UtilService {
     return assets;
   }
 
+
+  // map response to market[]
+  public response2MarketDataMapper(response: any) {
+    let markets: Market[] = [];
+    for (const key in response.data) {
+      if (Object.prototype.hasOwnProperty.call(response.data, key)) {
+        let element = response.data[key];
+        markets.push(this.mapElement2Market(element));
+      }
+    }
+    return markets;
+  }
+
   // map an (data) element to asset
   private mapElement2Asset(element: any) {
     let asset: Asset = new Asset();
@@ -51,6 +65,18 @@ export class UtilService {
     asset.vwap24Hr = element["vwap24Hr"];
     asset.pathToImage ="../../../assets/images/coins/"+  asset.symbol +".png"
     return asset;
+  }
+
+  // map an (data) element to market
+  private mapElement2Market(element: any) {
+    let market: Market = new Market();
+    market.exchangeId = element["exchangeId"];
+    market.baseId = element["baseId"];
+    market.quoteId = element["quoteId"];
+    market.baseSymbol = element["baseSymbol"];
+    market.quoteSymbol = element["quoteSymbol"];
+    market.priceUsd = element["priceUsd"];
+    return market;
   }
 
 }
